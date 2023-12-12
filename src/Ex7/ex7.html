@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Move Ball</title>
+  <title>Search Filters</title>
   <style>
-    #stage {
-      position: relative;
-      height: 400px;
-      width: 400px;
-      border: 1px solid black;
-    }
-
-    #ball {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 50px;
-      width: 50px;
-      background-color: red;
+    .filter {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div id="stage">
-    <div id="ball"></div>
-  </div>
+  <input id="searchInput" type="text" placeholder="Search...">
 
-  <script src="ex6.js"></script>
+  <ul id="list">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <li>Date</li>
+    <li>Elderberry</li>
+  </ul>
+
+  <script src="ex7.js"></script>
 </body>
 </html>

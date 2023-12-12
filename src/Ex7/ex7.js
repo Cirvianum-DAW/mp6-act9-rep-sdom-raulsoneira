@@ -1,43 +1,25 @@
-const d = document;
-let x = 0;
-let y = 0;
 
-function moveBall(e, ball, stage) {
-  const ballElement = d.querySelector(ball);
-  const stageElement = d.querySelector(stage);
-  const limitBall = ballElement.getBoundingClientRect();
-  const limitStage = stageElement.getBoundingClientRect();
-  // console.log(e.key)
-  // console.log(e.keyCode)
+function searchFilters(input, selector) {
+  document.addEventListener("keyup", (event) => {
+    // alternative to event.target.matches(input)
+    // if (event.target === document.querySelector(input)) {
+    if (event.target === document.querySelector(input)) {
+       //console.log(event.key)
+       //console.log(event.target.value)
 
-  switch (e.keyCode) {
-    case 37:
-      e.preventDefault();
-      if (limitBall.left > limitStage.left) x--;
-      break;
+       // We can add the possibility to clear the search by pressing the Escape key
+      if (event.key === "Escape") event.target.value = "";
 
-    case 38:
-      e.preventDefault();
-      if (limitBall.top > limitStage.top) y--;
-      break;
-
-    case 39:
-      e.preventDefault();
-      if (limitBall.right < limitStage.right) x++;
-      break;
-
-    case 40:
-      e.preventDefault();
-      if (limitBall.bottom < limitStage.bottom) y++;
-      break;
-
-    default:
-      break;
-  }
-  ballElement.style.transform = `translate(${x * 10}px,${y * 10}px)`;
+      // Every time we type a letter, we filter the list
+      console.log(document.querySelectorAll(selector))
+      document.querySelectorAll(selector).forEach(element => {
+        // includes will return "true" if the element contains the string we are looking for. It's case sensitive.
+        (element.textContent.toLowerCase().includes(event.target.value.toLowerCase()))
+          ? element.classList.remove("filter")
+          : element.classList.add("filter");
+      });
+    }
+  });
 }
 
-document.addEventListener('keydown', (e) => moveBall(e, '#ball', '#stage'));
-
-
-// Source: https://github.com/dmitrigrabov/dom-exercises
+searchFilters("#search", "li");
