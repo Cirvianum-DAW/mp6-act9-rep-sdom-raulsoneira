@@ -23,3 +23,5 @@ function searchFilters(input, selector) {
 }
 
 searchFilters("#search", "li");
+
+https://roddevwork.github.io/dom-exercices-javascript/

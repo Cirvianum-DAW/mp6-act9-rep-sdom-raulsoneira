@@ -39,4 +39,4 @@ function moveBall(e, ball, stage) {
 
 document.addEventListener('keydown', (e) => moveBall(e, '#ball', '#stage'));
 
-// Source https://github.com/dmitrigrabov/dom-exercises
+// Source https://roddevwork.github.io/dom-exercices-javascript/
