@@ -177,3 +177,47 @@ Pots veure una demo en la següent imatge:
 Genera un array amb el nom de diferents imatges que tinguis al teu projecte. Mostra aquestes imatges en una pàgina web. Afegeix un input de text i un botó per filtrar les imatges per nom. Si l'usuari escriu "gat", només es mostraran les imatges que continguin la paraula "gat" al seu nom o a l'atribut `alt`. Demo:
 
 ![Demo](/assets/filtre.gif)
+
+### Ex8 - Enviant fitxers en un formulari.
+
+No hem vist com podem pujar fitxers, per exemple a un formulari, i que aquests s'enviïn i arribin a un servidor. Per la gestió de fitxers a JS es fa servir l'objecte `FormData`.
+
+L'objecte `FormData` de JS proporciona una manera fàcil de construir un conjunt de parells clau-valor que representen dades de formulari. Aquestes dades poden ser enviades amb la funció `fetch` o amb un formulari HTML.
+
+Aquí tens un exemple bàsic de com utilitzar `FormData` per enviar un fitxer amb `fetch`:
+
+```javascript
+let formData = new FormData();
+
+// Afegeix dades al formulari
+formData.append('username', 'John');
+formData.append('email', 'john@example.com');
+
+// Envia les dades del formulari mitjançant una petició fetch
+fetch('/api/users', {
+  method: 'POST',
+  body: formData,
+});
+```
+
+En aquest exemple, es crea un nou objecte `FormData` i s'afegeixen dos camps: `username` i `email`. Després, es fa una petició `fetch` a l'endpoint `/api/users` i s'envien les dades del formulari.
+
+Una de les característiques més útils de `FormData` és la seva capacitat per manejar càrregues de fitxers. Si tens un input de tipus `file` en un formulari, pots afegir el fitxer seleccionat a l'objecte `FormData` i enviar-lo a un servidor:
+
+```js
+let formData = new FormData();
+let fileInput = document.querySelector('input[type="file"]');
+
+// Afegeix el fitxer seleccionat al formulari
+formData.append('fitxer_pujat', fileInput.files[0]);
+
+// Envia les dades del formulari mitjançant una petició fetch
+fetch('/api/upload', {
+  method: 'POST',
+  body: formData,
+});
+```
+
+Tot i que no tenim no tenim un servidor per rebre les dades, genera el codi necessari per enviar un fitxer a un servidor. Imagina que és un qüestionari per enviar un fitxer de currículum i que necessitem poder enviar una foto.
+
+Pots provar a fer ús de [Cloudinary](https://cloudinary.com/) per pujar les imatges. Aquest és un servei que et permet pujar imatges i arxius multimèdia a la núvol. Pots crear un compte gratuït i provar-ho. La seva documentació la pots trobar a [Cloudinary Docs](https://cloudinary.com/documentation/image_upload_api_reference).
